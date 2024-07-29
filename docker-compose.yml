@@ -15,26 +15,26 @@ services:
     volumes:
       - db:/data/db
 
-  app:
-    depends_on:
-      - mongo_db
-    build:
-      context: .
-      dockerfile: Dockerfile
-    restart: on-failure
-    env_file: .env
-    ports:
-      - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
-    environment:
-      SPRING_APPLICATION_JSON: '{
-          "spring.data.mongodb.uri" : "mongodb://$MONGODB_USER:$MONGODB_PASSWORD@mongo_db:$MONGODB_DOCKER_PORT/$MONGODB_DATABASE?authSource=admin"
-        }'
-    volumes:
-      - .m2:/root/.m2
-    stdin_open: true
-    tty: true
-    networks:
-      - mongo-network
+#  app:
+#    depends_on:
+#      - mongo_db
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    restart: on-failure
+#    env_file: .env
+#    ports:
+#      - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
+#    environment:
+#      SPRING_APPLICATION_JSON: '{
+#          "spring.data.mongodb.uri" : "mongodb://$MONGODB_USER:$MONGODB_PASSWORD@mongo_db:$MONGODB_DOCKER_PORT/$MONGODB_DATABASE?authSource=admin"
+#        }'
+#    volumes:
+#      - .m2:/root/.m2
+#    stdin_open: true
+#    tty: true
+#    networks:
+#      - mongo-network
 
   mongo-express:
     image: mongo-express
