@@ -30,5 +30,5 @@ WORKDIR .
 COPY --from=builder ./target/DockerTutorial-*.jar ./DockerTutorial.jar
 
 # Expose the port and define the entry point
-EXPOSE 8081
+EXPOSE 8082
 ENTRYPOINT ["java", "-jar", "./DockerTutorial.jar"]
